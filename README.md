@@ -10,3 +10,4 @@ https://flask.palletsprojects.com/en/3.0.x/
 
     pip freeze>requirements.txt
     pip install -r requirements.txt
+    flask --app mecpy run --debug
