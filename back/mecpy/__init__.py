@@ -9,6 +9,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'mecpy.sqlite'),
+        UPLOAD_FOLDER = 'C:/Desenvolvimento/projeto-DSCI/arquivos'
     )
 
     if test_config is None:
@@ -39,5 +40,11 @@ def create_app(test_config=None):
     from . import blog
     app.register_blueprint(blog.bp)
     app.add_url_rule('/', endpoint='index')
+
+    from . import file
+    app.add_url_rule('/file', endpoint='file', build_only=true)
+    app.add_url_rule(
+    "/uploads/<name>", endpoint="download_file", build_only=True
+)
 
     return app
