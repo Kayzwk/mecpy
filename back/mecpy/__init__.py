@@ -42,9 +42,8 @@ def create_app(test_config=None):
     app.add_url_rule('/', endpoint='index')
 
     from . import file
-    app.add_url_rule('/file', endpoint='file', build_only=true)
-    app.add_url_rule(
-    "/uploads/<name>", endpoint="download_file", build_only=True
-)
+    app.register_blueprint(file.bp)
+    app.add_url_rule('/file', endpoint='file', build_only=True)
+    app.add_url_rule("/uploads/<name>", endpoint="download_file", build_only=True)
 
     return app
